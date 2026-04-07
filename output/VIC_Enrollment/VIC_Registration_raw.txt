@@ -1,0 +1,17 @@
+Feature Name: VIC Enrollment
+Test ID | Test Scenario | Precondition | Test Steps | Expected Result | Priority
+TC001 | Display new service for eligible users | User is eligible (Saudi nationality, age 18‑65, inactive contributor) | Navigate to service list, locate “Register as Voluntary Contributor” | Service is visible | High
+TC002 | Ineligible user sees error pop‑up | User is ineligible (e.g., age <18) | Attempt to access the service | Error pop‑up with appropriate validation message appears | High
+TC003 | Purpose of registration dropdown populated | User on engagement details step | View purpose of registration dropdown | Dropdown shows four options (Freelancer, Establishment owner, Annuity upgrading, Annuity eligibility) | High
+TC004 | Eligible wages highlighted | User has prior engagement with defined wage range | Open wage selection | Only eligible wage(s) are highlighted/disabled for selection | High
+TC005 | Ineligible wage selection shows eligibility reason | User selects a wage not eligible | Select an ineligible wage | Eligibility reason from backend is displayed | Medium
+TC006 | Health record questions displayed as checkboxes | User at health record step | View health record list | Each question appears as a checkbox | High
+TC007 | Selecting “Yes” on any medical item routes to workflow | User checks “Yes” on any medical question | Submit health record | Transaction status set to workflow (pending medical review) | High
+TC008 | No medical selection results in auto‑approve | User does not check any medical question | Proceed | Transaction proceeds without manual review | High
+TC009 | Disclaimer acceptance required to proceed | User tries to continue without checking disclaimer | Click Next | Error message requiring acceptance of disclaimer | High
+TC010 | Freelancer must upload document | User type = Freelancer, no medical yes | Attempt to submit without uploading doc | Error message prompting document upload | High
+TC011 | Non‑freelancer without medical yes can skip upload | User type = Establishment owner, no medical yes | Proceed | Can proceed without document upload | Medium
+TC012 | Preview shows entered data correctly | All previous steps completed | Review request | All entered data (engagement details, wage, health, docs) displayed correctly | High
+TC013 | Successful submission displays confirmation with request ID | All fields valid, backend returns success | Submit request | Confirmation message containing request ID is displayed | High
+TC014 | Failure submission displays backend error | Backend returns error on submit | Submit request | Error message from backend is displayed | High
+TC015 | Validation messages for all ineligible scenarios | Various ineligible conditions (age <18, age >65, active GOSI engagement, government employee, NIC mismatch, deceased) | Attempt registration | Corresponding validation message appears for each scenario | High

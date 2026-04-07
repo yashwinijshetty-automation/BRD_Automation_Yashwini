@@ -1,0 +1,22 @@
+Feature Name: VIC Voluntary Contributor Registration
+Test ID | Test Scenario | Precondition | Test Steps | Expected Result
+TC001 | Display new service for eligible users | User is authenticated and meets eligibility criteria (Saudi nationality, age 18‑65, no active GOSI engagement) | 1. Open service list 2. Search for "Register as Voluntary Contributor" | Service entry is visible
+TC002 | Ineligible user sees popup message when selecting service | User is authenticated and does not meet eligibility (e.g., non‑Saudi, age <18, age >65, active GOSI) | 1. Attempt to select "Register as Voluntary Contributor" | Popup message appears with appropriate validation text
+TC003 | User can fill engagement details based on business logic | Eligible user has reached step 2 of registration | 1. Enter engagement details (purpose of registration, submission date, wage) | Fields display correct options per backend logic
+TC004 | User can select eligible wage; invalid wage shows eligibility reason | Eligible user has entered engagement details | 1. Choose a wage not allowed for the user | System displays eligibility reason from backend
+TC005 | User can update wage for each year, active in January of next year | User is on wage selection screen | 1. Select wage for current year 2. Change wage for next year | Updated wage becomes active in January
+TC006 | Health record details display checkbox questions | User proceeds to step 3 | 1. View health declaration section | List of medical questions displayed as checkboxes
+TC007 | Selecting any 'Yes' on medical items routes transaction to workflow | User is on health record screen | 1. Check any medical question as Yes | Transaction status changes to workflow
+TC008 | All 'No' selections result in auto‑approval | User checks all medical questions as No | 1. Submit health record | Request is auto‑approved
+TC009 | User must agree to disclaimer to proceed | User is on health record step | 1. Attempt to proceed without ticking disclaimer | System blocks progression
+TC010 | Freelancer type must upload document | User selects Freelancer purpose | 1. Try to submit without uploading document | System prompts to upload freelancer document
+TC011 | Non‑freelancer with no medical 'Yes' does not require document | User selects non‑Freelancer purpose and all medical answers are No | 1. Proceed to preview | No document upload required
+TC012 | Preview step shows all entered data before submission | User is at step 5 (preview) | 1. Review displayed data | All entered details are shown correctly
+TC013 | Successful submission displays confirmation with request ID | User submits request and backend succeeds | 1. Submit request | Confirmation message with request ID appears
+TC014 | Failed submission displays backend error message | Backend returns error on submission | 1. Submit request | Error message from backend is displayed
+TC015 | Validation message for non‑Saudi nationality | User nationality is non‑Saudi | 1. Try to register | Message: "Person is not Saudi, cannot be registered as a VIC"
+TC016 | Validation message for age less than 18 | User age < 18 | 1. Attempt registration | Message: "Person is less than 18 years of age, cannot be registered as a VIC"
+TC017 | Validation message for age more than 65 | User age > 65 | 1. Attempt registration | Message: "Person is more than 65 years of age, cannot be registered as a VIC"
+TC018 | Validation message for active GOSI engagement | User has an active GOSI engagement | 1. Attempt registration | Message: "Person has an active engagement with GOSI, cannot be registered as a VIC"
+TC019 | Validation message for government employee | User is a government employee | 1. Attempt registration | Message: "Person is a Government employee, cannot be registered as a VIC"
+TC020 | NIC service down displays appropriate message | NIC service is unavailable | 1. Attempt registration | Message: "NIC service is down, please try later"

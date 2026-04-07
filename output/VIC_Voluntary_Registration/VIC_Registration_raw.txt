@@ -1,0 +1,25 @@
+Feature Name: VIC Voluntary Registration
+
+| Test Case ID | Test Description | Precondition | Test Steps | Expected Result |
+| TC001 | Service "Register as Voluntary Contributor" appears for eligible user | User is logged in, Saudi nationality, age 18‑65, inactive contributor | Navigate to service list, locate the service | Service is visible |
+| TC002 | Ineligible user cannot see registration service or receives validation popup | User logged in, non‑Saudi nationality (or age <18, >65, active contributor) | Attempt to select the registration service | Popup message appears with validation text |
+| TC003 | Registration form loads for eligible user upon service selection | Eligible user selected service | Click service | Form displayed with fields |
+| TC004 | Purpose of registration dropdown options match business logic | Eligible user with known engagement months (<300 or >=300) | Inspect dropdown values | Options reflect correct purposes (Annuity eligibility, Annuity upgrade, Establishment owner, Freelancer) per rule |
+| TC005 | Submission date auto‑populated per business logic | Form opened | Observe submission date field | Date auto‑filled according to business rule |
+| TC006 | Only eligible wages are highlighted based on last engagement | User with previous engagement | View wage selection list | Eligible wages highlighted; ineligible not |
+| TC007 | Selecting ineligible wage triggers eligibility reason from backend | Form with wage selection | Select an ineligible wage | Reason message displayed |
+| TC008 | User can update wage for each year, effective January of next year | User changes wage | Edit wage, save | Update saved, effective from Jan next year |
+| TC009 | Wage details displayed after selecting wage | Wage selected | View wage details | Details shown (amount, year) |
+| TC010 | Health record section displays checkbox list of medical items | Step 3 of registration | Scroll to health section | List of medical items with checkboxes visible |
+| TC011 | Selecting any "Yes" on medical items moves transaction to workflow | At least one medical item marked Yes | Check Yes, submit | Transaction status set to "workflow" |
+| TC012 | No medical "Yes" selection results in auto‑approval | No medical Yes selected, user agrees to disclaimer | Submit | Transaction auto‑approved |
+| TC013 | User must agree to disclaimer to proceed | Disclaimer unchecked | Click submit | Error message prompting to agree |
+| TC014 | Freelancer type requires document upload | User type = Freelancer | Submit without uploading document | Prompt for document upload |
+| TC015 | Freelancer with medical "Yes" requires document and triggers workflow | Freelancer + medical Yes | Submit | Document upload required and transaction enters workflow |
+| TC016 | Review step shows all entered data before submission | Form completed | Click preview/review | All data displayed for confirmation |
+| TC017 | Successful submission shows confirmation with request ID | All fields valid, user submits | Submit form | Confirmation message displayed with request ID |
+| TC018 | Failed submission displays backend error message | Backend returns error (e.g., service down) | Submit | Error message from backend shown |
+| TC019 | Validation messages display correctly in English and Arabic | Each validation scenario (non‑Saudi, age <18, age >65, active contributor, NIC not found, deceased, government employee, NIC down) | Trigger each validation | Correct message in both languages shown |
+| TC020 | Age under 18 triggers age validation message | User age = 17 | Attempt registration | "Person is less than 18 years of age" message |
+| TC021 | Age over 65 triggers age validation message | User age = 66 | Attempt registration | "Person is more than 65 years of age" message |
+| TC022 | Re‑registration allowed for previous engagement ages 15‑65 | User age 15‑17 with previous engagement | Register again | Registration allowed; no age error |

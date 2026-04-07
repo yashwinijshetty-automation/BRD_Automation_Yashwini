@@ -1,0 +1,170 @@
+﻿
+
+
+
+
+VIC registration 
+Author: Norah Alghafees(نوره الغفيص)
+Date: 22/05 /2024
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 Table of Contents
+1.	Background:	3
+2.	Business Need:	3
+3.	Stakeholders:	3
+4.	Assumptions:	3
+5.	Dependencies/Constraints:	3
+6.	To Be:	3
+1.1	Process Flow	3
+1.2	UIUX design	3
+1.3	Solution Design (Architecture)	3
+7.	Functional Requirements:	3
+1.1	Customer Onboarding	3
+1.2	Dashboard	4
+1.3	Finance	4
+1.4	Reports	4
+8.	Non-Functional Requirements:	4
+1.1	Performance	4
+1.2	SLA	4
+1.3	Connectivity	4
+9.	Acceptance Criteria:	4
+10.	Impacted teams Effort:	5
+11.	Sign offs:	5
+12.	Appendix	5
+
+
+
+
+
+
+
+
+
+
+
+1. Background:
+* This service enables users to voluntary registration for Saudi citizens 
+
+2. Business Need:
+* This service facilitates users to applying for VIC from Taminaty application ,
+3. Stakeholders:
+NameDepartmentRoleA BDULMALEK A. ALKHAMIS(عبدالملك عبدالرحمن الخميس)
+BusinessSARA I. ALQUBAISI(ساره ابراهيم القبيسي)
+POTURKI A. ALOBAISI(تركي عبدالله العبيسي)
+KHALED H. ALFARAJ(خالد بن حمود الفرج)BADesignITTestingPMO
+4. Assumptions: 
+5. Dependencies/Constraints:
+* Dependency on current backend APIs which are already developed. 
+
+
+
+1.1 Solution Design (Architecture)
+1.1 Registration process 
+Engagement DetailsThe user will be able to fill details of engagement Health Record DetailsThe user will be able to check the health declaration form DocumentsThe user will be able to upload the required fieldPreviewThe user will be able to preview his request before submitting 
+1.2 Business rule 
+* User should be Saudi nationality 
+* User age should be between 18-65 
+o if user has a previous engagement" user age should be between 15-##
+* User should be Inactive contributor
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.3 Purposes of registration matrix :
+Purpose of registrationWhen can we choose this reasonRestriction for the wage selectedWorkflow
+NotesAnnuity eligibilityIf the contributor has less than 300 month
+
+
+The contributor should have one or more previous mandatory engagements.
+If having previous VIC, he must resume on the same category
+Or
+If having previous regular engagement, then apply the 10% ruleDirect change
+
+
+
+
+
+If the latest engagement for the contributor is 3 months or less then go to workflowWhen click any yes on medical form it should go to the doctorAnnuity upgradeIf the contributor has more than or equal to 300 monthsIf having previous VIC, he must resume on the same category
+Or
+If having previous regular engagement, then apply the 10% ruleDirect change
+
+
+
+
+
+
+If the latest engagement for the contributor is 3 months or less then go to workflowWhen click any yes on medical form it should go to the doctorEstablishment ownerWhen having an establishment and no previous engagement
+
+The contributor should be able to choose this reason whether they have a previous mandatory engagement or not.
+No restrictionDirect changeWhen click any yes on medical form it should go to the doctorFreelancerNo previous engagement and provide the freelancer document 
+
+
+The contributor should be able to choose this reason whether they have a previous mandatory engagement or not.
+No restrictionYes, Validator 1 and then completedWhen click any yes on medical form it should go to the doctor  
+
+
+6. Acceptance Criteria:
+* System should display new service " Register as Voluntary Contributor"
+* System should display registering form once the service selected from eligible users only
+o Once illegible user select pop-up msg should appear " as below table"
+* Step2:User should fill the required information "engagement details "
+o Purpose of registration list it will come from backend based on business logic
+
+o Submission date will come from business logic  
+o Wage selection "will highlight only the eligible wage based on his last engagement"
+o Once user select illegible wage, the reason form eligibility will come from backend 
+o User can update the wage for each year, it will activate on January of the next year
+* System should display the wage details once user selected desired wage 
+* Step3:user should check "Health Record Details"
+o System should display list of question as check box 
+o If user select yes on any of the medical item "transaction will be on workflow"
+o If user has no selection should be should be auto approve  
+o User should agree on declaimer to proceed the request 
+* Step4: if user type is freelancer should upload a document + or if he select yes on medical  , else no document required 
+* Step5:user should review the request before applying and submit  
+o If the request submitted successfully, then system should display confirmation msg with request id 
+o If failed , then system should display error msg from backend
+Msg ENMsg ARValidation  Person has an active engagement with GOSI, can not be registered as a VIC.المشترك لديه مدة اشتراك نشيطة، لا يمكن إضافته كمشترك اختياريPerson is less than 18 years of age, cannot be registered as a VIC.الشخص أقل من 18 عام، لا يمكن تسجيله كمشترك اختياري If user has previous engagement system shouldn't display the msgPerson is more than 65 years of age, cannot be registered as a VICالشخص أكبر من 65 عام، لا يمكن تسجيله كمشترك اختياريuser has previous engagement system shouldn't display the msgNo match found with NICلا يوجد بيانات مطابقة في مركز المعلومات الوطنيperson is deceased, cannot be added as a VICالشخص متوفي، لا يمكن إضافته كمشترك اختياري Person is a Government employee, cannot be registered as a VIC.الشخص موظف حكومي، لا يمكن تسجيله كمشترك اختياريNIC service is down and does not respond thrice لا  يمكن التحقق من مركز المعلومات الوطني، بأمل المحاولة لاحقا
+
+
+
+VIC Registration Purpose  ARVIC Registration Purpose  ENDescription ARDescription EN1- Freelancer عامل حرلأصحاب المهن المستثناة عن التسجيل في الاشتراك الالزاميFor whose work on professions excluded from registration in the mandatory contribution.2- Establishment ownerمالك منشأةتمكين ملاك المنشآت من التسجيل في أنظمة التأمينات بتغطية معاشات لاستحقاق معاش التقاعدEnable establishment owners to register on GOSI to be covered with annuity coverage in order to qualify for retirement pension3- Annuity upgrading تحسين المعاشزيادة مدة الاشتراك لتحسين المعاش increasing his contribution period for improving his pension4- Annuity eligibility استحقاق المعاشاستكمال مدة الاشتراك المؤهلة لاستحقاق معاش التقاعدcompleting the contribution period qualifying for entitlement to old-age pension
+
+
+Saudi General Organization for Social Insurance
+
+
+ Confidential سري
+
+ Confidential سري
+2
+
+
+
+ Confidential سري
+
